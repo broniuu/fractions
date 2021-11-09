@@ -6,11 +6,7 @@ public class Fraction {
 
     Fraction(Integer numerator, Integer denominator) {
         setNumerator(numerator);
-        if (denominator == 0) {
-            throw new ZeroDenominator();
-        } else {
-            setDenominator(denominator);
-        }
+        setDenominator(denominator);
 
     }
     public void setDenominator(int denominator) {
@@ -62,7 +58,7 @@ public class Fraction {
 
     public Fraction shorten() {
         Finder finder = new Finder();
-        Integer greatestDivisor = 0;
+        Integer greatestDivisor = 1;
         try {
             greatestDivisor = finder.findGreatestCommonDivisor(this.numerator, this.denominator);
         } catch (IOException exception){
@@ -71,10 +67,5 @@ public class Fraction {
         this.numerator = this.numerator / greatestDivisor;
         this.denominator = this.denominator / greatestDivisor;
         return this;
-    }
-
-    @Override
-    public String toString() {
-        return numerator + "/" + denominator ;
     }
 }
