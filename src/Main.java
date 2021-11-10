@@ -6,5 +6,7 @@ public class Main {
         System.out.println(firstFraction.toString());
         Fraction thirdFraction = Fraction.addTwoFractions(firstFraction, secondFraction);
         System.out.println(thirdFraction.toString());
+        Fraction fourthFraction = Fraction.substractTwoFractions(firstFraction, secondFraction);
+        System.out.println(fourthFraction.toString());
     }
 }
