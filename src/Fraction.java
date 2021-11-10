@@ -77,4 +77,17 @@ public class Fraction {
     public String toString() {
         return numerator + "/" + denominator ;
     }
+    static Fraction addTwoFractions(Fraction firstFraction, Fraction secondFraction){
+        Integer numerator = 0;
+        Integer denominator = 0;
+        if (firstFraction.denominator == secondFraction.denominator) {
+            numerator = firstFraction.numerator + secondFraction.numerator;
+            denominator = secondFraction.denominator;
+        } else {
+            numerator = firstFraction.numerator * secondFraction.denominator +
+                    secondFraction.numerator * firstFraction.denominator;
+            denominator = firstFraction.denominator * secondFraction.denominator;
+        }
+        return new Fraction(numerator,denominator).shorten();
+    }
 }
