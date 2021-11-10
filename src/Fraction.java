@@ -72,4 +72,9 @@ public class Fraction {
         this.denominator = this.denominator / greatestDivisor;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return numerator + "/" + denominator ;
+    }
 }
