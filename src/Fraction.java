@@ -1,6 +1,6 @@
 import java.io.IOException;
 
-public class Fraction {
+public class Fraction implements Comparable<Fraction>{
     private Integer numerator;
     private Integer denominator;
 
@@ -11,7 +11,7 @@ public class Fraction {
         } else {
             setDenominator(denominator);
         }
-
+        this.shorten();
     }
     public void setDenominator(int denominator) {
 
@@ -102,5 +102,9 @@ public class Fraction {
             denominator = firstFraction.denominator * secondFraction.denominator;
         }
         return new Fraction(numerator,denominator).shorten();
+    }
+
+    public int compareTo(Fraction fraction){
+        return Fraction.substractTwoFractions(this, fraction).numerator;
     }
 }
