@@ -1,6 +1,6 @@
 import java.io.IOException;
 
-public class Fraction {
+public class Fraction implements Comparable<Fraction>{
     private Integer numerator;
     private Integer denominator;
 
@@ -11,7 +11,7 @@ public class Fraction {
         } else {
             setDenominator(denominator);
         }
-
+        this.shorten();
     }
     public void setDenominator(int denominator) {
 
@@ -57,7 +57,6 @@ public class Fraction {
             this.denominator = this.denominator * secondFraction.denominator;
         }
         return this.shorten();
-
     }
 
     public Fraction shorten() {
@@ -75,6 +74,37 @@ public class Fraction {
 
     @Override
     public String toString() {
-        return numerator + "/" + denominator ;
+            return numerator + "/" + denominator ;
+    }
+    static Fraction addTwoFractions(Fraction firstFraction, Fraction secondFraction){
+        Integer numerator = 0;
+        Integer denominator = 0;
+        if (firstFraction.denominator == secondFraction.denominator) {
+            numerator = firstFraction.numerator + secondFraction.numerator;
+            denominator = secondFraction.denominator;
+        } else {
+            numerator = firstFraction.numerator * secondFraction.denominator +
+                    secondFraction.numerator * firstFraction.denominator;
+            denominator = firstFraction.denominator * secondFraction.denominator;
+        }
+        return new Fraction(numerator,denominator).shorten();
+    }
+    static Fraction substractTwoFractions(Fraction firstFraction, Fraction secondFraction){
+        Integer numerator = 0;
+        Integer denominator = 0;
+        if(firstFraction.denominator == secondFraction.denominator){
+            numerator = firstFraction.numerator - secondFraction.numerator;
+            denominator = secondFraction.denominator;
+        }
+        else{
+            numerator = firstFraction.numerator * secondFraction.denominator -
+                    secondFraction.numerator * firstFraction.denominator;
+            denominator = firstFraction.denominator * secondFraction.denominator;
+        }
+        return new Fraction(numerator,denominator).shorten();
+    }
+
+    public int compareTo(Fraction fraction){
+        return Fraction.substractTwoFractions(this, fraction).numerator;
     }
 }
